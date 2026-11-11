@@ -1,8 +1,6 @@
 # Personal Website — terminal-style portfolio
 
-A static, dependency-free rebuild of a terminal-flavored portfolio in the spirit of
-[ddaniel.dev](https://ddaniel.dev/). Now personalized for **Subash Jonnalagadda**
-using info from both resumes placed in this folder.
+A static, dependency-free terminal-flavored personal portfolio website.
 
 ## Files
 
@@ -12,8 +10,6 @@ using info from both resumes placed in this folder.
 | `style.css` | Design tokens + layout + animations |
 | `app.js` | `CONFIG` object at the top (all editable content) + behavior |
 | `fonts/iosevka-light.woff2` | Iosevka (SIL OFL licensed) terminal font |
-| `resume (2).pdf` | Resume source used to populate site content |
-| `Resume.docx (1).pdf` | Resume source used to populate site content |
 
 ## Run it
 
@@ -26,7 +22,7 @@ python -m http.server 5173
 
 then visit http://localhost:5173
 
-## Make it yours
+## Edit it
 
 Open `app.js` and edit the `CONFIG` block at the top:
 
@@ -40,11 +36,8 @@ Open `app.js` and edit the `CONFIG` block at the top:
 - `contact` — email, GitHub, LinkedIn links
 - `footerLeft/right`
 
-The Google Fonts link (Fira Sans / Comfortaa / Source Code Pro) needs internet the
-first time; everything still renders offline with mono fallbacks.
+The Google Fonts link (Fira Sans / Comfortaa / Source Code Pro) needs internet the first time; everything still renders offline with mono fallbacks.
 
 ## Notes
 
-- Design inspired by ddaniel.dev; no code was copied from it.
-- All personal content (name, bio, experience, projects, contact) comes from the
-  resumes in this folder.
+- Design inspired by ddaniel.dev; everything here was written from scratch.
