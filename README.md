@@ -37,7 +37,3 @@ Open `app.js` and edit the `CONFIG` block at the top:
 - `footerLeft/right`
 
 The Google Fonts link (Fira Sans / Comfortaa / Source Code Pro) needs internet the first time; everything still renders offline with mono fallbacks.
-
-## Notes
-
-- Design inspired by ddaniel.dev; everything here was written from scratch.
