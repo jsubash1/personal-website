@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Self-directed developer who learns by building. Projects, experience and a long-standing soft spot for terminals." />
+  <title>Daniel - Full Stack Developer</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0c0c'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='30' fill='%23f2ff5b'%3E%3E_%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preload" href="fonts/iosevka-light.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Fira+Sans:wght@400;500&family=Source+Code+Pro:wght@200..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+
+<body class="select-none">
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Boot terminal animation -->
+  <div id="boot" aria-live="polite">
+    <button id="skip-btn" class="skip-btn" type="button">
+      <span>Skip Animation</span>
+      <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <section class="terminal-page" id="boot-terminal"></section>
+  </div>
+
+  <!-- Main app -->
+  <div id="app" class="app" hidden>
+    <header class="navbar">
+      <div class="nav-left">
+        <span class="scramble drag-label tab-hide" id="drag-label-desktop">DRAG ANYWHERE</span>
+      </div>
+      <div class="mobile-bar">
+        <span class="scramble drag-label" id="drag-label-mobile">DRAG ANYWHERE</span>
+        <button id="hamburger-btn" class="hamburger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+          <span class="h-line"></span>
+          <span class="h-line"></span>
+          <span class="h-line"></span>
+        </button>
+      </div>
+      <nav aria-label="Primary">
+        <ul class="nav-list" id="nav-list"></ul>
+      </nav>
+    </header>
+
+    <div id="menu" class="menu" aria-hidden="true">
+      <nav>
+        <ul class="menu-list" id="menu-list"></ul>
+      </nav>
+    </div>
+
+    <nav class="page-indicator" id="page-indicator" aria-label="Sections"></nav>
+
+    <main id="pages">
+      <!-- Landing -->
+      <section id="landing" class="page landing">
+        <div class="blob-container" aria-hidden="true">
+          <div class="blob blur blob-primary"></div>
+          <div class="blob blur blob-primary-mobile"></div>
+          <div class="blob blur blob-secondary"></div>
+          <div class="blob blur blob-shadow"></div>
+        </div>
+
+        <div class="hero">
+          <h1 class="main-text text-animation" id="hero-name">Daniel</h1>
+          <div class="role-line" aria-label="What I do">
+            <span class="scramble role-prompt tab-hide" id="role-prompt" data-scramble-text="daniel@web:~$">daniel@web:~$</span><span id="role-text"></span><span class="type-caret" aria-hidden="true"></span>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="cta-contact" type="button">Contact Me</button>
+            <button class="btn btn-ghost" id="cta-learn" type="button">
+              <span>Learn More</span>
+              <svg class="chev chev-down" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="wave wave-down" aria-hidden="true">
+          <div class="wave-row" data-bars="8" data-level="1"></div>
+          <div class="wave-row" data-bars="5" data-level="0.6"></div>
+          <div class="wave-row" data-bars="3" data-level="0.35"></div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="page fill">
+        <header class="page-header">
+          <span class="header-title scramble" data-scramble-text="ABOUT">ABOUT</span>
+          <span class="brace">{</span>
+        </header>
+
+        <div class="page-body about-body">
+          <div class="about-cols">
+            <div class="about-col">
+              <p>My whole approach is simple: learn a concept, break it, rebuild it. No tutorial playlist has ever taught me as much as one stubborn bug I refused to hand over to Google after the third try.</p>
+              <p>Over the years that loop turned into a shelf of small self-started projects, each one an excuse to try a technology I had zero formal schooling in.</p>
+            </div>
+            <div class="about-col">
+              <p>When I'm not shipping something, I'm probably reverse-engineering how a random app does its animations, or refactoring older work until it stops embarrassing me.</p>
+            </div>
+          </div>
+          <div class="arch-note">
+            <svg viewBox="0 0 24 24" class="arch-logo" aria-hidden="true">
+              <path d="M12 2c.7 2.2 1.8 4.4 3.1 6.5l-3.1 12.6-3.1-12.6C10.2 6.4 11.3 4.2 12 2zM5.2 15.4c.9 2 2.2 3.8 3.9 5.2l-1 2.4c-1.1-1-2.1-2.1-2.9-3.4l.9-1.2zM18.8 15.4l-.9 1.2c-.8 1.3-1.8 2.4-2.9 3.4l-1-2.4c1.7-1.4 3-3.2 3.9-5.2z" fill="currentColor" />
+            </svg>
+            <span>I use Arch btw</span>
+          </div>
+        </div>
+
+        <footer class="page-close">}</footer>
+      </section>
+
+      <!-- Work -->
+      <section id="work" class="page fill">
+        <header class="page-header">
+          <span class="header-title scramble" data-scramble-text="WORK">WORK</span>
+          <span class="brace">{</span>
+        </header>
+
+        <div class="page-body work-body">
+          <p class="work-intro" id="work-intro"></p>
+          <div class="timeline-wrap">
+            <div class="timeline" id="timeline">
+              <hr class="tl-line" />
+              <div class="tl-track" id="tl-track"></div>
+            </div>
+          </div>
+          <p class="drag-hint">DRAG TO EXPLORE</p>
+        </div>
+
+        <footer class="page-close">}</footer>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="page fill">
+        <header class="page-header">
+          <span class="header-title scramble" data-scramble-text="SKILLS">SKILLS</span>
+          <span class="brace">{</span>
+        </header>
+
+        <div class="page-body skills-body">
+          <p class="skills-intro" id="skills-intro"></p>
+          <div class="skills-cols">
+            <ul class="skill-col" id="skills-col-1"></ul>
+            <hr class="glow-divider" />
+            <ul class="skill-col" id="skills-col-2"></ul>
+          </div>
+        </div>
+
+        <footer class="page-close">}</footer>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="page fill wide">
+        <header class="page-header">
+          <span class="header-title scramble" data-scramble-text="PROJECTS">PROJECTS</span>
+          <span class="brace">{</span>
+        </header>
+
+        <div class="page-body projects-body">
+          <div class="carousel" id="carousel">
+            <div class="car-track" id="car-track"></div>
+            <button class="car-btn car-prev" id="car-prev" type="button" aria-label="Previous project">
+              <svg class="chev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+            <button class="car-btn car-next" id="car-next" type="button" aria-label="Next project">
+              <svg class="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <footer class="page-close">}</footer>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="page fill">
+        <header class="page-header">
+          <span class="header-title scramble" data-scramble-text="CONTACT">CONTACT</span>
+          <span class="brace">{</span>
+        </header>
+
+        <div class="page-body contact-body">
+          <div class="contact-info">
+            <h2 class="talk-heading" id="talk-heading">
+              <span class="talk-brace">&#9001;</span><span id="talk-text">say hi!</span><span class="talk-brace">&#9002;</span>
+            </h2>
+            <p class="contact-lead">Have a project in mind?</p>
+            <p class="contact-sub" id="contact-sub"></p>
+            <div class="social-row" id="social-row"></div>
+          </div>
+
+          <form id="contact-form" class="contact-form" autocomplete="off">
+            <label class="form-field">
+              <span class="form-label">Name</span>
+              <input required name="name" type="text" placeholder="Your name" />
+            </label>
+            <label class="form-field">
+              <span class="form-label">Email</span>
+              <input required name="email" type="email" placeholder="you@example.com" />
+            </label>
+            <label class="form-field">
+              <span class="form-label">Message</span>
+              <textarea required name="message" rows="4" placeholder="Hi! I'd like to talk about..."></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Send</button>
+              <button class="btn btn-ghost" id="copy-email" type="button">Copy Email</button>
+            </div>
+          </form>
+        </div>
+
+        <footer class="site-footer">
+          <span id="footer-left"></span>
+          <span id="footer-right"></span>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <div id="toasts" class="toast-stack" aria-live="polite"></div>
+</body>
+</html>
